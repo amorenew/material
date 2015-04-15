@@ -12,22 +12,22 @@ import android.view.View;
 public class DialogFragment extends android.support.v4.app.DialogFragment{
 
     public interface Builder{
-        public com.rey.material.app.Dialog build(Context context);
+        com.rey.material.app.Dialog build(Context context);
 
         /**
          * Handle click event on Positive Action.
          */
-        public void onPositiveActionClicked(DialogFragment fragment);
+        void onPositiveActionClicked(DialogFragment fragment);
 
         /**
          * Handle click event on Negative Action.
          */
-        public void onNegativeActionClicked(DialogFragment fragment);
+        void onNegativeActionClicked(DialogFragment fragment);
 
         /**
          * Handle click event on Neutral Action.
          */
-        public void onNeutralActionClicked(DialogFragment fragment);
+        void onNeutralActionClicked(DialogFragment fragment);
     }
 
     protected static final String ARG_BUILDER = "arg_builder";
@@ -69,7 +69,9 @@ public class DialogFragment extends android.support.v4.app.DialogFragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(savedInstanceState != null && mBuilder == null)
-            mBuilder = (Builder)savedInstanceState.getParcelable(ARG_BUILDER);
+            mBuilder = savedInstanceState.getParcelable(ARG_BUILDER);
+
+
     }
 
     @Override

@@ -23,8 +23,6 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -32,6 +30,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 import com.rey.material.demo.R;
+import com.rey.material.util.LocaleUtil;
 import com.rey.material.util.ThemeUtil;
 import com.rey.material.widget.CompoundButton;
 import com.rey.material.widget.EditText;
@@ -318,7 +317,7 @@ public class RecurringPickerDialog extends Dialog implements WeekView.OnDaySelec
     }
 
     private void updateRecurringData(){
-        Calendar cal = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance(LocaleUtil.getLocale());
         cal.setTimeInMillis(mRecurring.getStartTime());
         int order = Recurring.getWeekDayOrderNum(cal);
         String dayOfWeek = cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
