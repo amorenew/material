@@ -1,10 +1,15 @@
 package com.rey.material.app;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.view.View;
+
+import com.rey.material.util.LocaleUtil;
+
+import java.util.Locale;
 
 /**
  * Created by Rey on 1/12/2015.
@@ -62,6 +67,14 @@ public class DialogFragment extends android.support.v4.app.DialogFragment{
         dialog.positiveActionClickListener(mActionListener)
                 .negativeActionClickListener(mActionListener)
                 .negativeActionClickListener(mActionListener);
+        Locale locale = new Locale("ar");
+
+        Configuration config = new Configuration();
+        getActivity().getResources().updateConfiguration(config,
+                getActivity().getResources().getDisplayMetrics());
+        config.locale = locale;
+        LocaleUtil.setLocale(locale, getActivity());
+        Locale.setDefault(locale);
         return dialog;
     }
 
