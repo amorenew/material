@@ -8,7 +8,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.MotionEvent;
@@ -19,6 +18,7 @@ import android.view.animation.Animation;
 import android.widget.FrameLayout;
 
 import com.rey.material.R;
+import com.rey.material.util.LocaleUtil;
 import com.rey.material.util.ThemeUtil;
 import com.rey.material.widget.DatePicker;
 import com.rey.material.widget.YearPicker;
@@ -37,7 +37,7 @@ public class DatePickerDialog extends Dialog {
     private float mCornerRadius;
 
     public interface OnDateChangedListener{
-        public void onDateChanged(int oldDay, int oldMonth, int oldYear, int newDay, int newMonth, int newYear);
+        void onDateChanged(int oldDay, int oldMonth, int oldYear, int newDay, int newMonth, int newYear);
     }
 
     private OnDateChangedListener mOnDateChangedListener;
@@ -633,7 +633,7 @@ public class DatePickerDialog extends Dialog {
 
         public Builder(int styleId){
             super(styleId);
-            Calendar cal = Calendar.getInstance();
+            Calendar cal = Calendar.getInstance(LocaleUtil.getLocale());
             mDay = cal.get(Calendar.DAY_OF_MONTH);
             mMonth = cal.get(Calendar.MONTH);
             mYear = cal.get(Calendar.YEAR);
@@ -674,7 +674,7 @@ public class DatePickerDialog extends Dialog {
 
         public Builder dateRange(long minTime, long maxTime){
             if(mCalendar == null)
-                mCalendar = Calendar.getInstance();
+                mCalendar = Calendar.getInstance(LocaleUtil.getLocale());
 
             mCalendar.setTimeInMillis(minTime);
             int minDay = mCalendar.get(Calendar.DAY_OF_MONTH);
@@ -697,7 +697,7 @@ public class DatePickerDialog extends Dialog {
 
         public Builder date(long time) {
             if (mCalendar == null)
-                mCalendar = Calendar.getInstance();
+                mCalendar = Calendar.getInstance(LocaleUtil.getLocale());
 
             mCalendar.setTimeInMillis(time);
             int day = mCalendar.get(Calendar.DAY_OF_MONTH);

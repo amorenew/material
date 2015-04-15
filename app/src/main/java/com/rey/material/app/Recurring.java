@@ -1,7 +1,8 @@
 package com.rey.material.app;
 
+import com.rey.material.util.LocaleUtil;
+
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Created by Rey on 2/4/2015.
@@ -84,7 +85,7 @@ public class Recurring {
                     break;
                 case END_UNTIL_DATE:
                     sb.append("; end=until ");
-                    Calendar cal = Calendar.getInstance();
+                    Calendar cal = Calendar.getInstance(LocaleUtil.getLocale());
                     cal.setTimeInMillis(mEndSetting);
                     sb.append(cal.get(Calendar.DAY_OF_MONTH))
                             .append('/')
@@ -230,7 +231,7 @@ public class Recurring {
         if(mStartTime >= now)
             return mStartTime;
 
-        Calendar cal = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance(LocaleUtil.getLocale());
 
         switch (mRepeatMode){
             case REPEAT_DAILY:
@@ -259,6 +260,7 @@ public class Recurring {
     }
 
     private static long gotoFirstDayOfWeek(Calendar cal){
+
         int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
         int firstDayOfWeek = cal.getFirstDayOfWeek();
         int shift = dayOfWeek >= firstDayOfWeek ? (dayOfWeek - firstDayOfWeek) : (dayOfWeek + 7 - firstDayOfWeek);

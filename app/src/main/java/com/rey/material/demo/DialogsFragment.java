@@ -15,9 +15,11 @@ import com.rey.material.app.Dialog;
 import com.rey.material.app.DialogFragment;
 import com.rey.material.app.SimpleDialog;
 import com.rey.material.app.TimePickerDialog;
+import com.rey.material.util.LocaleUtil;
 import com.rey.material.widget.Button;
 
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class DialogsFragment extends Fragment implements View.OnClickListener {
 
@@ -54,8 +56,9 @@ public class DialogsFragment extends Fragment implements View.OnClickListener {
         bt_time_dark.setOnClickListener(this);
         bt_date_dark.setOnClickListener(this);
 
-		return v;
-	}
+
+        return v;
+    }
 
 	@Override
 	public void onPause() {
@@ -208,6 +211,7 @@ public class DialogsFragment extends Fragment implements View.OnClickListener {
                         .negativeAction("CANCEL");
                 break;
             case R.id.dialog_bt_time_light:
+
                 builder = new TimePickerDialog.Builder(6, 00){
                     @Override
                     public void onPositiveActionClicked(DialogFragment fragment) {
@@ -227,7 +231,9 @@ public class DialogsFragment extends Fragment implements View.OnClickListener {
                         .negativeAction("CANCEL");
                 break;
             case R.id.dialog_bt_date_light:
-                builder = new DatePickerDialog.Builder(){
+                //Locale locale = new Locale("ar");
+                LocaleUtil.setLocale(new Locale("ar", "eg"), getActivity());
+                builder = new DatePickerDialog.Builder(R.style.Material_App_Dialog_Simple_Light) {
                     @Override
                     public void onPositiveActionClicked(DialogFragment fragment) {
                         DatePickerDialog dialog = (DatePickerDialog)fragment.getDialog();
@@ -288,6 +294,7 @@ public class DialogsFragment extends Fragment implements View.OnClickListener {
         }
 
         DialogFragment fragment = DialogFragment.newInstance(builder);
+
         fragment.show(getFragmentManager(), null);
     }
 }

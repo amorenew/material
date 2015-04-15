@@ -23,6 +23,7 @@ import android.widget.BaseAdapter;
 
 import com.rey.material.R;
 import com.rey.material.drawable.BlankDrawable;
+import com.rey.material.util.LocaleUtil;
 import com.rey.material.util.ThemeUtil;
 import com.rey.material.util.TypefaceUtil;
 import com.rey.material.util.ViewUtil;
@@ -66,7 +67,7 @@ public class DatePicker extends ListView implements AbsListView.OnScrollListener
     private MonthAdapter mAdapter;
 
     public interface OnDateChangedListener {
-        public void onDateChanged(int oldDay, int oldMonth, int oldYear, int newDay, int newMonth, int newYear);
+        void onDateChanged(int oldDay, int oldMonth, int oldYear, int newDay, int newMonth, int newYear);
     }
 
     private OnDateChangedListener mOnDateChangedListener;
@@ -130,7 +131,7 @@ public class DatePicker extends ListView implements AbsListView.OnScrollListener
 
         mDayPadding = ThemeUtil.dpToPx(context, 4);
 
-        mCalendar = Calendar.getInstance();
+        mCalendar = Calendar.getInstance(LocaleUtil.getLocale());
         mIsMondayFirst = mCalendar.getFirstDayOfWeek() == Calendar.MONDAY;
 
         int index = mCalendar.get(Calendar.DAY_OF_WEEK) - 1;

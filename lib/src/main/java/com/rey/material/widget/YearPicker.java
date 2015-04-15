@@ -21,6 +21,7 @@ import android.widget.BaseAdapter;
 
 import com.rey.material.R;
 import com.rey.material.drawable.BlankDrawable;
+import com.rey.material.util.LocaleUtil;
 import com.rey.material.util.ThemeUtil;
 import com.rey.material.util.TypefaceUtil;
 
@@ -50,7 +51,7 @@ public class YearPicker extends ListView{
 
     public interface OnYearChangedListener{
 
-        public void onYearChanged(int oldValue, int newValue);
+        void onYearChanged(int oldValue, int newValue);
 
     }
 
@@ -141,7 +142,7 @@ public class YearPicker extends ListView{
             yearMax = Integer.MAX_VALUE;
 
         if(year < 0){
-            Calendar cal = Calendar.getInstance();
+            Calendar cal = Calendar.getInstance(LocaleUtil.getLocale());
             year = cal.get(Calendar.YEAR);
         }
 

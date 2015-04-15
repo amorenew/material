@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rey.material.R;
+import com.rey.material.util.LocaleUtil;
 import com.rey.material.util.ThemeUtil;
 import com.rey.material.widget.CircleCheckedTextView;
 import com.rey.material.widget.TimePicker;
@@ -36,7 +37,7 @@ public class TimePickerDialog extends Dialog{
 
     public interface OnTimeChangedListener{
 
-        public void onTimeChanged(int oldHour, int oldMinute, int newHour, int newMinute);
+        void onTimeChanged(int oldHour, int oldMinute, int newHour, int newMinute);
 
     }
 
@@ -281,7 +282,7 @@ public class TimePickerDialog extends Dialog{
         }
 
         public String getFormattedTime(DateFormat formatter){
-            Calendar cal = Calendar.getInstance();
+            Calendar cal = Calendar.getInstance(LocaleUtil.getLocale());
             cal.set(Calendar.HOUR_OF_DAY, getHour());
             cal.set(Calendar.MINUTE, getMinute());
             cal.set(Calendar.SECOND, 0);
@@ -555,7 +556,7 @@ public class TimePickerDialog extends Dialog{
 
         public Builder(){
             super(R.style.Material_App_Dialog_TimePicker_Light);
-            Calendar cal = Calendar.getInstance();
+            Calendar cal = Calendar.getInstance(LocaleUtil.getLocale());
             mHour = cal.get(Calendar.HOUR_OF_DAY);
             mMinute = cal.get(Calendar.MINUTE);
         }

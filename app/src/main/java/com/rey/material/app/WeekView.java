@@ -13,7 +13,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.rey.material.demo.R;
+import com.rey.material.util.LocaleUtil;
 import com.rey.material.util.ThemeUtil;
 import com.rey.material.util.ViewUtil;
 import com.rey.material.widget.CircleCheckedTextView;
@@ -54,7 +54,7 @@ public class WeekView extends FrameLayout{
     };
 
     public interface OnDaySelectionChangedListener{
-        public void onDaySelectionChanged(int dayOfWeek, boolean selected);
+        void onDaySelectionChanged(int dayOfWeek, boolean selected);
     }
 
     private OnDaySelectionChangedListener mOnDaySelectionChangedListener;
@@ -108,7 +108,7 @@ public class WeekView extends FrameLayout{
             mBackgroundColors = new ColorStateList(states, colors);
         }
 
-        Calendar cal = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance(LocaleUtil.getLocale());
         mFirstDayOfWeek = cal.getFirstDayOfWeek();
         int color = mBackgroundColors.getColorForState(getDrawableState(), mBackgroundColors.getDefaultColor());
 
