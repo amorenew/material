@@ -42,7 +42,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * Created by Rey on 2/2/2015.
@@ -320,7 +319,7 @@ public class RecurringPickerDialog extends Dialog implements WeekView.OnDaySelec
         Calendar cal = Calendar.getInstance(LocaleUtil.getLocale());
         cal.setTimeInMillis(mRecurring.getStartTime());
         int order = Recurring.getWeekDayOrderNum(cal);
-        String dayOfWeek = cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+        String dayOfWeek = cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, LocaleUtil.getLocale());
         int formattedTextId = MONTH_SAME_WEEKDAY[(order + 1) % MONTH_SAME_WEEKDAY.length];
         mSameWeekdayRadioButton.setText(getContext().getResources().getString(formattedTextId, dayOfWeek));
 

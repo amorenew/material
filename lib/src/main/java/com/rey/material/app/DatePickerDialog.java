@@ -26,7 +26,6 @@ import com.rey.material.widget.YearPicker;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 /**
  * Created by Rey on 12/30/2014.
@@ -370,8 +369,8 @@ public class DatePickerDialog extends Dialog {
                     mYear = String.valueOf(TypefaceUtil.getArNum(newYear));
 
                 } else {
-                    mWeekDay = cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
-                    mMonth = cal.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault());
+                    mWeekDay = cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, LocaleUtil.getLocale());
+                    mMonth = cal.getDisplayName(Calendar.MONTH, Calendar.SHORT, LocaleUtil.getLocale());
                     mDay = String.format(DAY_FORMAT, newDay);
                     mYear = String.valueOf(newYear);
 

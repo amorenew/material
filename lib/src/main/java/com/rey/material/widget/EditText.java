@@ -1,11 +1,5 @@
 package com.rey.material.widget;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Locale;
-
-import org.xmlpull.v1.XmlPullParserException;
-
 import android.annotation.TargetApi;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -37,7 +31,6 @@ import android.view.ActionMode;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.accessibility.AccessibilityEvent;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.CompletionInfo;
@@ -46,12 +39,26 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.ExtractedText;
 import android.view.inputmethod.ExtractedTextRequest;
 import android.view.inputmethod.InputConnection;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
+import android.widget.Filter;
+import android.widget.Filterable;
+import android.widget.FrameLayout;
+import android.widget.ListAdapter;
+import android.widget.MultiAutoCompleteTextView;
+import android.widget.Scroller;
 
 import com.rey.material.R;
 import com.rey.material.drawable.DividerDrawable;
+import com.rey.material.util.LocaleUtil;
 import com.rey.material.util.ThemeUtil;
 import com.rey.material.util.ViewUtil;
+
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class EditText extends FrameLayout {
 
@@ -1974,9 +1981,9 @@ public class EditText extends FrameLayout {
 	public Locale getTextLocale (){
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
 			return mInputView.getTextLocale();
-		
-		return Locale.getDefault();
-	}
+
+        return LocaleUtil.getLocale();
+    }
 	
 	/**
      * @return the extent by which text is currently being stretched

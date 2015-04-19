@@ -19,7 +19,6 @@ import com.rey.material.util.ViewUtil;
 import com.rey.material.widget.CircleCheckedTextView;
 
 import java.util.Calendar;
-import java.util.Locale;
 
 /**
  * Created by Rey on 2/6/2015.
@@ -119,7 +118,7 @@ public class WeekView extends FrameLayout{
             cal.set(Calendar.DAY_OF_WEEK, dayOFWeek);
 
             CircleCheckedTextView view = new CircleCheckedTextView(context, attrs, defStyleAttr, defStyleRes);
-            view.setText(cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault()).toUpperCase());
+            view.setText(cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, LocaleUtil.getLocale()).toUpperCase());
             view.setTag(dayOFWeek);
             view.setOnCheckedChangeListener(mCheckListener);
             view.setOnClickListener(mClickListener);

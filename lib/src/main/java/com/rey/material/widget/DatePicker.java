@@ -31,7 +31,6 @@ import com.rey.material.util.ViewUtil;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 /**
  * Created by Rey on 12/31/2014.
@@ -498,7 +497,7 @@ public class DatePicker extends ListView implements AbsListView.OnScrollListener
             if (LocaleUtil.getLocale().getLanguage().equalsIgnoreCase("ar")) {
                 mMonthText = getContext().getResources().getStringArray(R.array.months)[mMonth] + " " + TypefaceUtil.getArNum(mYear);
             } else {
-                mMonthText = mCalendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + mYear;
+                mMonthText = mCalendar.getDisplayName(Calendar.MONTH, Calendar.LONG, LocaleUtil.getLocale()) + " " + mYear;
 
             }
 
