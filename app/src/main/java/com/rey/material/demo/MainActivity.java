@@ -14,23 +14,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.rey.material.app.ToolbarManager;
+import com.rey.material.util.LocaleUtil;
 import com.rey.material.util.ThemeUtil;
 import com.rey.material.widget.SnackBar;
 import com.rey.material.widget.TabPageIndicator;
 
 import java.lang.reflect.Field;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends ActionBarActivity implements ToolbarManager.OnToolbarGroupChangedListener {
 
@@ -54,7 +51,9 @@ public class MainActivity extends ActionBarActivity implements ToolbarManager.On
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.activity_main);
-				
+		LocaleUtil.setLocale(new Locale("ar", "eg"), this);
+
+
 		dl_navigator = (DrawerLayout)findViewById(R.id.main_dl);
 		fl_drawer = (FrameLayout)findViewById(R.id.main_fl_drawer);
 		lv_drawer = (ListView)findViewById(R.id.main_lv_drawer);
@@ -157,10 +156,10 @@ public class MainActivity extends ActionBarActivity implements ToolbarManager.On
 	    TEXTFIELDS ("TextFields"),
 	    SNACKBARS ("SnackBars"),
         DIALOGS ("Dialogs");
-	    private final String name;       
+	    private final String name;
 
-	    private Tab(String s) {
-	        name = s;
+		Tab(String s) {
+			name = s;
 	    }
 
 	    public boolean equalsName(String otherName){

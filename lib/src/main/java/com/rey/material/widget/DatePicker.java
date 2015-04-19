@@ -31,7 +31,6 @@ import com.rey.material.util.ViewUtil;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 /**
  * Created by Rey on 12/31/2014.
@@ -128,7 +127,6 @@ public class DatePicker extends ListView implements AbsListView.OnScrollListener
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setTextAlign(Paint.Align.CENTER);
-
         mDayPadding = ThemeUtil.dpToPx(context, 4);
 
         mCalendar = Calendar.getInstance(LocaleUtil.getLocale());
@@ -137,7 +135,7 @@ public class DatePicker extends ListView implements AbsListView.OnScrollListener
         int index = mCalendar.get(Calendar.DAY_OF_WEEK) - 1;
         DateFormat format = new SimpleDateFormat(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2 ? "EEEEE" : "E");
         for(int i = 0; i < 7; i++){
-            mLabels[index] = format.format(mCalendar.getTime());
+            mLabels[index] = context.getResources().getStringArray(R.array.weeks)[i];
             index = (index + 1) % 7;
             mCalendar.add(Calendar.DAY_OF_MONTH, 1);
         }
@@ -491,7 +489,7 @@ public class DatePicker extends ListView implements AbsListView.OnScrollListener
             mFirstDayCol = mCalendar.get(Calendar.DAY_OF_WEEK) - 1;
             if(mIsMondayFirst)
                 mFirstDayCol = mFirstDayCol == 0 ? 6 : mFirstDayCol - 1;
-            mMonthText = mCalendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + mYear;
+            mMonthText = getContext().getResources().getStringArray(R.array.months)[mMonth] + " " + mYear;
         }
 
         @Override
@@ -543,6 +541,7 @@ public class DatePicker extends ListView implements AbsListView.OnScrollListener
                 x = (i + 0.5f) * mDayWidth + paddingLeft;
                 y = paddingTop;
                 int index = mIsMondayFirst ? (i == 6 ? 0 : i + 1) : i;
+
                 canvas.drawText(mLabels[index], x, y, mPaint);
             }
 

@@ -9,7 +9,6 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Parcel;
-import android.os.Parcelable;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +25,6 @@ import com.rey.material.widget.YearPicker;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 /**
  * Created by Rey on 12/30/2014.
@@ -187,8 +185,7 @@ public class DatePickerDialog extends Dialog {
             mPaint.setTextAlign(Paint.Align.CENTER);
             mRect = new RectF();
             mHeaderSecondaryBackground = new Path();
-            mPadding = ThemeUtil.dpToPx(context, 8);
-
+            mPadding = ThemeUtil.dpToPx(context, 12);
             mYearPicker = new YearPicker(context);
             mDatePicker = new DatePicker(context);
             mYearPicker.setPadding(mPadding, mPadding, mPadding, mPadding);
@@ -363,9 +360,14 @@ public class DatePickerDialog extends Dialog {
                 cal.set(Calendar.YEAR, newYear);
                 cal.set(Calendar.MONTH, newMonth);
                 cal.set(Calendar.DAY_OF_MONTH, newDay);
-
-                mWeekDay = cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
-                mMonth = cal.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault());
+                int index = cal.get(Calendar.DAY_OF_WEEK);
+                if (index < 7) {
+                    mWeekDay = getContext().getResources().getStringArray(R.array.weeks)[index];
+                } else {
+                    mWeekDay = getContext().getResources().getStringArray(R.array.weeks)[0];
+                }
+                // mWeekDay =get cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+                mMonth = getContext().getResources().getStringArray(R.array.months)[newMonth];
                 mDay = String.format(DAY_FORMAT, newDay);
                 mYear = String.valueOf(newYear);
 
@@ -770,7 +772,7 @@ public class DatePickerDialog extends Dialog {
             dest.writeInt(mYear);
         }
 
-        public static final Parcelable.Creator<Builder> CREATOR = new Parcelable.Creator<Builder>() {
+        public static final Creator<Builder> CREATOR = new Creator<Builder>() {
             public Builder createFromParcel(Parcel in) {
                 return new Builder(in);
             }
