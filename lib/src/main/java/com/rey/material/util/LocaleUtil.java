@@ -27,4 +27,14 @@ public class LocaleUtil {
 
 
     }
+
+
+    public static boolean locale(Context context) {
+        String languageToLoad = "ar"; // your language
+        if (getLocale().getLanguage().equals(languageToLoad)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
