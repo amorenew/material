@@ -320,7 +320,11 @@ public class YearPicker extends ListView{
 
             int year = (Integer)getItem(position);
             v.setTag(year);
-            v.setText(String.valueOf(year));
+            if (LocaleUtil.getLocale().getLanguage().equalsIgnoreCase("ar")) {
+                v.setText(String.valueOf(TypefaceUtil.getArNum(year)));
+            } else {
+                v.setText(String.valueOf(year));
+            }
             v.setCheckedImmediately(year == mCurYear);
             return v;
         }

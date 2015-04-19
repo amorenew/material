@@ -19,12 +19,14 @@ import android.widget.FrameLayout;
 import com.rey.material.R;
 import com.rey.material.util.LocaleUtil;
 import com.rey.material.util.ThemeUtil;
+import com.rey.material.util.TypefaceUtil;
 import com.rey.material.widget.DatePicker;
 import com.rey.material.widget.YearPicker;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * Created by Rey on 12/30/2014.
@@ -360,16 +362,20 @@ public class DatePickerDialog extends Dialog {
                 cal.set(Calendar.YEAR, newYear);
                 cal.set(Calendar.MONTH, newMonth);
                 cal.set(Calendar.DAY_OF_MONTH, newDay);
-                int index = cal.get(Calendar.DAY_OF_WEEK);
-                if (index < 7) {
+                int index = cal.get(Calendar.DAY_OF_WEEK) - 1;
+                if (LocaleUtil.getLocale().getLanguage().equalsIgnoreCase("ar")) {
                     mWeekDay = getContext().getResources().getStringArray(R.array.weeks)[index];
+                    mMonth = getContext().getResources().getStringArray(R.array.months)[newMonth];
+                    mDay = TypefaceUtil.getArNum(newDay);
+                    mYear = String.valueOf(TypefaceUtil.getArNum(newYear));
+
                 } else {
-                    mWeekDay = getContext().getResources().getStringArray(R.array.weeks)[0];
+                    mWeekDay = cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+                    mMonth = cal.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault());
+                    mDay = String.format(DAY_FORMAT, newDay);
+                    mYear = String.valueOf(newYear);
+
                 }
-                // mWeekDay =get cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
-                mMonth = getContext().getResources().getStringArray(R.array.months)[newMonth];
-                mDay = String.format(DAY_FORMAT, newDay);
-                mYear = String.valueOf(newYear);
 
                 if(oldMonth != newMonth || oldYear != newYear)
                     mDatePicker.goTo(newMonth, newYear);

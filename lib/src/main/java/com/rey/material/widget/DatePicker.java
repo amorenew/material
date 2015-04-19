@@ -31,6 +31,7 @@ import com.rey.material.util.ViewUtil;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * Created by Rey on 12/31/2014.
@@ -135,7 +136,12 @@ public class DatePicker extends ListView implements AbsListView.OnScrollListener
         int index = mCalendar.get(Calendar.DAY_OF_WEEK) - 1;
         DateFormat format = new SimpleDateFormat(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2 ? "EEEEE" : "E");
         for(int i = 0; i < 7; i++){
-            mLabels[index] = context.getResources().getStringArray(R.array.weeks)[i];
+            if (LocaleUtil.getLocale().getLanguage().equalsIgnoreCase("ar")) {
+                mLabels[index] = context.getResources().getStringArray(R.array.weeks)[i];
+            } else {
+                mLabels[index] = format.format(mCalendar.getTime());
+
+            }
             index = (index + 1) % 7;
             mCalendar.add(Calendar.DAY_OF_MONTH, 1);
         }
@@ -489,7 +495,13 @@ public class DatePicker extends ListView implements AbsListView.OnScrollListener
             mFirstDayCol = mCalendar.get(Calendar.DAY_OF_WEEK) - 1;
             if(mIsMondayFirst)
                 mFirstDayCol = mFirstDayCol == 0 ? 6 : mFirstDayCol - 1;
-            mMonthText = getContext().getResources().getStringArray(R.array.months)[mMonth] + " " + mYear;
+            if (LocaleUtil.getLocale().getLanguage().equalsIgnoreCase("ar")) {
+                mMonthText = getContext().getResources().getStringArray(R.array.months)[mMonth] + " " + TypefaceUtil.getArNum(mYear);
+            } else {
+                mMonthText = mCalendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + mYear;
+
+            }
+
         }
 
         @Override
@@ -562,7 +574,7 @@ public class DatePicker extends ListView implements AbsListView.OnScrollListener
                 x = (col + 0.5f) * mDayWidth + paddingLeft;
                 y = row * mDayHeight + paddingTop;
 
-                canvas.drawText(getDayText(day), x, y, mPaint);
+                canvas.drawText(TypefaceUtil.getArNum(getDayText(day)), x, y, mPaint);
                 col++;
                 if(col == 7) {
                     col = 0;

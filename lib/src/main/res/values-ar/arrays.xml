@@ -2,14 +2,14 @@
 <resources>
 
     <string-array name="weeks">
-        <item>السبت</item>
+
         <item>الأحد</item>
         <item>الاثنين</item>
         <item>الثلاثاء</item>
         <item>الأربعاء</item>
         <item>الخميس</item>
         <item>الجمعة</item>
-
+        <item>السبت</item>
     </string-array>
 
     <string-array name="months">

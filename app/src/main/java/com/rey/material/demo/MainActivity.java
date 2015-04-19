@@ -51,7 +51,7 @@ public class MainActivity extends ActionBarActivity implements ToolbarManager.On
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.activity_main);
-		LocaleUtil.setLocale(new Locale("ar", "eg"), this);
+		LocaleUtil.setLocale(this, new Locale("ar", "eg"));
 
 
 		dl_navigator = (DrawerLayout)findViewById(R.id.main_dl);

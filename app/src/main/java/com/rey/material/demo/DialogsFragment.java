@@ -229,7 +229,7 @@ public class DialogsFragment extends Fragment implements View.OnClickListener {
                         .negativeAction("CANCEL");
                 break;
             case R.id.dialog_bt_date_light:
-                builder = new DatePickerDialog.Builder(R.style.Material_App_Dialog_Simple_Light) {
+                builder = new DatePickerDialog.Builder(R.style.Material_App_Dialog_DatePicker_Light) {
                     @Override
                     public void onPositiveActionClicked(DialogFragment fragment) {
                         DatePickerDialog dialog = (DatePickerDialog)fragment.getDialog();

@@ -15,7 +15,7 @@ public class LocaleUtil {
         return locale;
     }
 
-    public static void setLocale(Locale locale, Context context) {
+    public static void setLocale(Context context, Locale locale) {
         LocaleUtil.locale = locale;
 
         Configuration config = new Configuration();
