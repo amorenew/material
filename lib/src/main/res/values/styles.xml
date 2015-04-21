@@ -465,8 +465,8 @@
         <item name="dp_dayTextSize">@dimen/abc_text_size_caption_material</item>
         <item name="dp_textLabelColor">@color/abc_secondary_text_material_dark</item>
         <item name="dp_textDisableColor">@color/abc_secondary_text_material_dark</item>
-        <item name="dp_headerPrimaryHeight">144dp</item>
-        <item name="dp_headerSecondaryHeight">32dp</item>
+        <item name="dp_headerPrimaryHeight">@dimen/dp_headerPrimaryHeight</item>
+        <item name="dp_headerSecondaryHeight">@dimen/dp_headerSecondaryHeight</item>
         <item name="dp_headerPrimaryColor">?attr/colorPrimary</item>
         <item name="dp_headerSecondaryColor">?attr/colorPrimaryDark</item>
         <item name="dp_headerPrimaryTextSize">@dimen/abc_text_size_display_2_material</item>
@@ -487,8 +487,8 @@
         <item name="dp_dayTextSize">@dimen/abc_text_size_caption_material</item>
         <item name="dp_textLabelColor">@color/abc_secondary_text_material_light</item>
         <item name="dp_textDisableColor">@color/abc_secondary_text_material_light</item>
-        <item name="dp_headerPrimaryHeight">144dp</item>
-        <item name="dp_headerSecondaryHeight">32dp</item>
+        <item name="dp_headerPrimaryHeight">@dimen/dp_headerPrimaryHeight</item>
+        <item name="dp_headerSecondaryHeight">@dimen/dp_headerSecondaryHeight</item>
         <item name="dp_headerPrimaryColor">?attr/colorPrimary</item>
         <item name="dp_headerSecondaryColor">?attr/colorPrimaryDark</item>
         <item name="dp_headerPrimaryTextSize">@dimen/abc_text_size_display_2_material</item>
