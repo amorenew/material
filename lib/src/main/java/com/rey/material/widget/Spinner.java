@@ -508,7 +508,7 @@ public class Spinner extends FrameLayout {
         }
 
         setMeasuredDimension(width, height);
-        if (LocaleUtil.locale(mcontext)) {
+        if (LocaleUtil.locale()) {
             width += paddingHorizontal;
         } else {
             width -= paddingHorizontal;
@@ -576,7 +576,7 @@ public class Spinner extends FrameLayout {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 
-        if (LocaleUtil.locale(mcontext)) {
+        if (LocaleUtil.locale()) {
             mArrowDrawable.setBounds(getPaddingRight(), getPaddingTop() + (mLabelView == null ? 0 : mLabelView.getMeasuredHeight()), getArrowDrawableWidth() + getPaddingRight(), h - getDividerDrawableHeight() - getPaddingBottom());
         } else {
             mArrowDrawable.setBounds(w - getArrowDrawableWidth() - getPaddingRight(), getPaddingTop() + (mLabelView == null ? 0 : mLabelView.getMeasuredHeight()), w - getPaddingRight(), h - getDividerDrawableHeight() - getPaddingBottom());
@@ -1011,6 +1011,7 @@ public class Spinner extends FrameLayout {
             } else
                 mTempRect.left = mTempRect.right = 0;
 
+
             final int spinnerPaddingLeft = Spinner.this.getPaddingLeft();
             final int spinnerPaddingRight = Spinner.this.getPaddingRight();
             final int spinnerWidth = Spinner.this.getWidth();
@@ -1027,14 +1028,15 @@ public class Spinner extends FrameLayout {
             else
                 setContentWidth(mDropDownWidth);
 
-            if (ViewUtils.isLayoutRtl(Spinner.this))
+            if (ViewUtils.isLayoutRtl(Spinner.this)) {
                 hOffset += spinnerWidth - spinnerPaddingRight - getWidth();
-            else if (LocaleUtil.locale(mcontext)) {
-                hOffset += spinnerPaddingLeft - 90;
+            } else if (LocaleUtil.locale()) {
+                hOffset = -(spinnerPaddingLeft - (spinnerWidth - spinnerPaddingRight - getWidth())) + (hOffset * -1);
             } else {
                 hOffset += spinnerPaddingLeft;
             }
             setHorizontalOffset(hOffset);
+
         }
 
         public void show() {
