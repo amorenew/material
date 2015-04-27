@@ -14,7 +14,6 @@ import android.os.Parcelable;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -130,6 +129,7 @@ public class Dialog extends android.app.Dialog{
         mNeutralAction.setId(ACTION_NEUTRAL);
         mNeutralAction.setPadding(mActionPadding, 0, mActionPadding, 0);
         mNeutralAction.setBackgroundResource(0);
+
 
         mContainer.addView(mCardView);
         mCardView.addView(mTitle);
@@ -374,6 +374,7 @@ public class Dialog extends android.app.Dialog{
 
     public Dialog positiveAction(CharSequence action){
         mPositiveAction.setText(action);
+        mPositiveAction.setTextSize(getContext().getResources().getDimension(R.dimen.dialog_button_size));
         mPositiveAction.setVisibility(TextUtils.isEmpty(action) ? View.GONE : View.VISIBLE);
         return this;
     }
@@ -423,6 +424,7 @@ public class Dialog extends android.app.Dialog{
 
     public Dialog negativeAction(CharSequence action){
         mNegativeAction.setText(action);
+        mNegativeAction.setTextSize(getContext().getResources().getDimension(R.dimen.dialog_button_size));
         mNegativeAction.setVisibility(TextUtils.isEmpty(action) ? View.GONE : View.VISIBLE);
         return this;
     }
@@ -1037,10 +1039,10 @@ public class Dialog extends android.app.Dialog{
         protected Builder(Parcel in) {
             mStyleId = in.readInt();
             mContentViewId = in.readInt();
-            mTitle = (CharSequence)in.readParcelable(null);
-            mPositive = (CharSequence)in.readParcelable(null);
-            mNegative = (CharSequence)in.readParcelable(null);
-            mNeutral = (CharSequence)in.readParcelable(null);
+            mTitle = in.readParcelable(null);
+            mPositive = in.readParcelable(null);
+            mNegative = in.readParcelable(null);
+            mNeutral = in.readParcelable(null);
 
             onReadFromParcel(in);
         }
