@@ -136,7 +136,7 @@ public class DatePicker extends ListView implements AbsListView.OnScrollListener
         DateFormat format = new SimpleDateFormat(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2 ? "EEEEE" : "E");
         for(int i = 0; i < 7; i++){
             if (LocaleUtil.getLocale().getLanguage().equalsIgnoreCase("ar")) {
-                mLabels[index] = context.getResources().getStringArray(R.array.weeks)[i];
+                mLabels[i] = context.getResources().getStringArray(R.array.weeks)[i];
             } else {
                 mLabels[index] = format.format(mCalendar.getTime());
 
