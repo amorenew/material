@@ -106,8 +106,34 @@ public class Dialog extends android.app.Dialog{
         mActionOuterHeight = ThemeUtil.dpToPx(context, 48);
         mActionPadding = ThemeUtil.dpToPx(context, 8);
         mActionOuterPadding = ThemeUtil.dpToPx(context, 16);
+        mDialogHorizontalPadding = ThemeUtil.dpToPx(context, context.getResources().getInteger(R.integer.horizontalPadding));
+        mDialogVerticalPadding = ThemeUtil.dpToPx(context, context.getResources().getInteger(R.integer.verticalPadding));
+
+        //mDialogVerticalPadding = ThemeUtil.dpToPx(context, R.integer.verticalPadding);
+       /* mDialogHorizontalPadding = ThemeUtil.dpToPx(context, 40);
+        mDialogVerticalPadding = ThemeUtil.dpToPx(context, 24);*/
+
+
+//modified
+     /*   mContentPadding = ThemeUtil.dpToPx(context,100);
+        mActionMinWidth = ThemeUtil.dpToPx(context, 260);
+        mActionHeight = ThemeUtil.dpToPx(context, 150);
+        mActionOuterHeight = ThemeUtil.dpToPx(context, 200);
+        mActionPadding = ThemeUtil.dpToPx(context, 30);
+        mActionOuterPadding = ThemeUtil.dpToPx(context, 70);
+        mDialogHorizontalPadding = ThemeUtil.dpToPx(context, 160);
+        mDialogVerticalPadding = ThemeUtil.dpToPx(context, 100);*//**/
+//default
+        /*mContentPadding = ThemeUtil.dpToPx(context, 24);
+        mActionMinWidth = ThemeUtil.dpToPx(context, 64);
+        mActionHeight = ThemeUtil.dpToPx(context, 36);
+        mActionOuterHeight = ThemeUtil.dpToPx(context, 48);
+        mActionPadding = ThemeUtil.dpToPx(context, 8);
+        mActionOuterPadding = ThemeUtil.dpToPx(context, 16);
         mDialogHorizontalPadding = ThemeUtil.dpToPx(context, 40);
         mDialogVerticalPadding = ThemeUtil.dpToPx(context, 24);
+*/
+
 
         mCardView = new DialogCardView(context);
         mContainer = new ContainerFrameLayout(context);

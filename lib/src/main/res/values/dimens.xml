@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     <dimen name="dp_headerSecondaryHeight">32dp</dimen>
     <dimen name="dp_headerPrimaryHeight">144dp</dimen>
-    <dimen name="dialog_button_size">5dp</dimen>
+    <dimen name="dialog_button_size">9dp</dimen>
+
+
 </resources>
