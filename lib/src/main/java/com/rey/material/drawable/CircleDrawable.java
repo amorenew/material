@@ -85,7 +85,7 @@ public class CircleDrawable extends Drawable implements Animatable {
     protected void onBoundsChange(Rect bounds) {
         mX = bounds.exactCenterX();
         mY = bounds.exactCenterY();
-        mRadius = Math.min(bounds.width(), bounds.height()) / 2f;
+        mRadius = Math.max(bounds.width(), bounds.height()) / 2f;
     }
 
     @Override

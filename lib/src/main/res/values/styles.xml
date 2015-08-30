@@ -417,6 +417,11 @@
         <item name="tp_textTimeColor">#90FFFFFF</item>
     </style>
 
+    <style name="Material.App.Dialog.DatePicker.Light.NoDay" parent="Material.App.Dialog.DatePicker.Light">
+        <item name="dp_headerPrimaryHeight">@dimen/dp_headerPrimaryHeightNoDay</item>
+        <item name="dp_headerSecondaryHeight">@dimen/dp_headerSecondaryHeightNoDay</item>
+    </style>
+
     <style name="Material.Widget.YearPicker">
         <item name="dp_yearTextSize">@dimen/abc_text_size_title_material</item>
         <item name="dp_yearItemHeight">48dp</item>
