@@ -29,7 +29,7 @@ public class LocaleUtil {
     }
 
 
-    public static boolean locale() {
+    public static boolean IsRTL() {
         String languageToLoad = "ar"; // your language
         if (getLocale().getLanguage().equals(languageToLoad)) {
             return true;

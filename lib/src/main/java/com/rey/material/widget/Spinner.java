@@ -508,7 +508,7 @@ public class Spinner extends FrameLayout {
         }
 
         setMeasuredDimension(width, height);
-        if (LocaleUtil.locale()) {
+        if (LocaleUtil.IsRTL()) {
             width += paddingHorizontal;
         } else {
             width -= paddingHorizontal;
@@ -576,7 +576,7 @@ public class Spinner extends FrameLayout {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 
-        if (LocaleUtil.locale()) {
+        if (LocaleUtil.IsRTL()) {
             mArrowDrawable.setBounds(getPaddingRight(), getPaddingTop() + (mLabelView == null ? 0 : mLabelView.getMeasuredHeight()), getArrowDrawableWidth() + getPaddingRight(), h - getDividerDrawableHeight() - getPaddingBottom());
         } else {
             mArrowDrawable.setBounds(w - getArrowDrawableWidth() - getPaddingRight(), getPaddingTop() + (mLabelView == null ? 0 : mLabelView.getMeasuredHeight()), w - getPaddingRight(), h - getDividerDrawableHeight() - getPaddingBottom());
@@ -1030,7 +1030,7 @@ public class Spinner extends FrameLayout {
 
             if (ViewUtils.isLayoutRtl(Spinner.this)) {
                 hOffset += spinnerWidth - spinnerPaddingRight - getWidth();
-            } else if (LocaleUtil.locale()) {
+            } else if (LocaleUtil.IsRTL()) {
                 hOffset = -(spinnerPaddingLeft - (spinnerWidth - spinnerPaddingRight - getWidth())) + (hOffset * -1);
             } else {
                 hOffset += spinnerPaddingLeft;
