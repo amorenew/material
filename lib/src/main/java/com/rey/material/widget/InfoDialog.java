@@ -60,5 +60,15 @@ public class InfoDialog extends Dialog {
         return this;
     }
 
+    public void setNegativeVisible(int visible) {
+        this.btnNo.setVisibility(visible);
+/*
+        RelativeLayout.LayoutParams testLP = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+        testLP.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        testLP.addRule(RelativeLayout.BELOW,R.id.tv_exit_confirm);
+        testLP.setMargins(24,20,24,5);
+        this.btnYes.setLayoutParams(testLP);*/
+    }
 
 }

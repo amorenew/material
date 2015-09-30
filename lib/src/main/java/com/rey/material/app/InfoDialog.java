@@ -111,4 +111,7 @@ public class InfoDialog extends android.support.v4.app.DialogFragment implements
         this.listener = listener;
     }
 
+    public void setNegativeVisible(int visible) {
+        this.btnNo.setVisibility(visible);
+    }
 }
