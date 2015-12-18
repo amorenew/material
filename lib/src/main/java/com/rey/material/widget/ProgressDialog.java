@@ -23,13 +23,13 @@ public class ProgressDialog extends Dialog implements Handler.Callback {
     public Context c;
     public Dialog d;
     public Button no;
-    int vdalue;
+    int countValue;
     TextView mProgressPercent;
     TextView mProgressNumber;
     ProgressView mProgress;
     int allValue = 0;
     private Handler mHandler;
-    float progressVlaue;
+    float progressValue;
     private static final int MSG_UPDATE_PROGRESS = 1002;
     private static final long PROGRESS_INTERVAL = 7000;
     private static final long PROGRESS_UPDATE_INTERVAL = PROGRESS_INTERVAL / 100;
@@ -52,8 +52,6 @@ public class ProgressDialog extends Dialog implements Handler.Callback {
             mProgress = (ProgressView) findViewById(R.id.loadingBar);
             mProgressPercent = (TextView) findViewById(R.id.tv_progress_present);
             mProgressNumber = (TextView) findViewById(R.id.tv_progress_number);
-            mProgressPercent.setText(vdalue + "%");
-            mProgress.setProgress(0f);
         } else {
             setContentView(R.layout.circle_progress);
             mMessageView = (TextView) findViewById(R.id.tv_progress);
@@ -64,17 +62,17 @@ public class ProgressDialog extends Dialog implements Handler.Callback {
 
     public void incrementProgressBy(int diff) {
         if (mProgress != null) {
-            incrementProgressByds(diff);
+            addProgress(diff);
             onProgressChanged();
         }
     }
 
-    public void incrementProgressByds(int value) {
-        vdalue = value;
-        allValue += vdalue;
+    public void addProgress(int value) {
+        countValue = value;
+        allValue += countValue;
         String allValueAr = TypefaceUtil.getArNum(allValue);
         if (allValue <= 100) {
-            if (!LocaleUtil.locale()) {
+            if (!LocaleUtil.IsRTL()) {
                 mProgressPercent.setText((allValue) + "%");
                 mProgressNumber.setText((allValue) + "/100");
             } else {
@@ -82,7 +80,7 @@ public class ProgressDialog extends Dialog implements Handler.Callback {
                 mProgressNumber.setText(TypefaceUtil.getArNum("100") + "/" + (allValueAr));
             }
         }
-        progressVlaue = (float) value / 100;
+        progressValue = (float) value / 100;
     }
 
     @Override
@@ -90,7 +88,7 @@ public class ProgressDialog extends Dialog implements Handler.Callback {
         switch (msg.what) {
 
             case MSG_UPDATE_PROGRESS:
-                mProgress.setProgress((float) (mProgress.getProgress() + progressVlaue));
+                mProgress.setProgress((float) (mProgress.getProgress() + progressValue));
                 break;
         }
         return false;

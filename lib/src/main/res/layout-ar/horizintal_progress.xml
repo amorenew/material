@@ -9,21 +9,20 @@
     <com.rey.material.widget.ProgressView
         android:id="@+id/loadingBar"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:layout_height="30dp"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
+        android:layout_marginTop="6dip"
+        android:layout_marginBottom="1dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_centerHorizontal="true"
+        app:pv_progressStyle="@style/DeterminateLinearProgressDrawableStyle"
+        app:pv_progressMode="determinate"
         app:pv_autostart="true"
         app:pv_circular="false"
-        android:rotationY="180"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        app:pv_progressStyle="@style/DeterminateLinearProgressDrawableStyle"
-        app:pv_progressMode="determinate" />
+        android:rotationY="180" />
 
     <RelativeLayout
-        android:padding="12dp"
+        android:padding="6dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -33,10 +32,10 @@
             android:layout_height="wrap_content"
             android:text="0%"
             android:id="@+id/tv_progress_present"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/abc_primary_text_material_light"
             android:gravity="center|right"
-            android:paddingLeft="24dp"
+            android:layout_marginRight="10dip"
             android:layout_alignParentRight="true"
 
             />
@@ -47,10 +46,10 @@
             android:layout_height="wrap_content"
             android:text="0/100"
             android:id="@+id/tv_progress_number"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/abc_primary_text_material_light"
             android:gravity="center|left"
-            android:paddingRight="24dp" />
+            android:layout_marginLeft="10dip" />
     </RelativeLayout>
 
 </LinearLayout>

@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     android:layout_gravity="right"
     android:gravity="right"
-    android:paddingBottom="10dip"
-    android:paddingLeft="100dip"
-    android:paddingRight="8dip"
-    android:paddingTop="10dip"
+    android:orientation="horizontal"
+    android:padding="18dip"
 
 
     >
@@ -18,7 +15,7 @@
     <com.rey.material.widget.TextView
         android:id="@+id/tv_progress"
         style="@style/Material.Drawable.CheckBox"
-        android:layout_width="wrap_content"
+        android:layout_width="280dp"
         android:layout_height="50dp"
         android:gravity="center|right"
         android:paddingRight="24dp"
@@ -28,8 +25,8 @@
 
     <com.rey.material.widget.ProgressView
         android:id="@+id/loadingBar"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:padding="2dp"
