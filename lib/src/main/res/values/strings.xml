@@ -2,6 +2,8 @@
 
     <string name="app_name">Material</string>
     <string name="loading">Loading ...</string>
+    <string name="am">PM</string>
+    <string name="pm">AM</string>
 
     <array name="progress_colors">
         <item>#FF3F8AF8</item>

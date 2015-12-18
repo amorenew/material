@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import com.rey.material.R;
 import com.rey.material.util.LocaleUtil;
 import com.rey.material.util.ThemeUtil;
+import com.rey.material.util.TypefaceUtil;
 import com.rey.material.widget.CircleCheckedTextView;
 import com.rey.material.widget.TimePicker;
 
@@ -193,11 +194,24 @@ public class TimePickerDialog extends Dialog{
             String pm = a.getString(R.styleable.TimePickerDialog_tp_pm);
             a.recycle();
 
-            if(am == null)
-                am = DateUtils.getAMPMString(Calendar.AM).toUpperCase();
+            if (am == null) {
+                if (LocaleUtil.getLocale().getLanguage().equalsIgnoreCase("ar")) {
+                    am = getResources().getString(R.string.am);
+                } else {
+                    am = DateUtils.getAMPMString(Calendar.AM).toUpperCase();
 
-            if(pm == null)
-                pm = DateUtils.getAMPMString(Calendar.PM).toUpperCase();
+
+                }
+            }
+
+            if (pm == null) {
+                if (LocaleUtil.getLocale().getLanguage().equalsIgnoreCase("ar")) {
+                    pm = getResources().getString(R.string.pm);
+                } else {
+
+                    pm = DateUtils.getAMPMString(Calendar.PM).toUpperCase();
+                }
+            }
 
             int[][] states = new int[][]{
                     new int[]{-android.R.attr.state_checked},
@@ -502,13 +516,13 @@ public class TimePickerDialog extends Dialog{
 
             mPaint.setTextSize(mTextTimeSize);
             mPaint.setColor(mTimePicker.getMode() == TimePicker.MODE_HOUR ? mTimePicker.getTextHighlightColor() : mTextTimeColor);
-            canvas.drawText(mHour, mHourX, mBaseY, mPaint);
+            canvas.drawText(TypefaceUtil.getArNum(mHour), mHourX, mBaseY, mPaint);
 
             mPaint.setColor(mTextTimeColor);
             canvas.drawText(TIME_DIVIDER, mDividerX, mBaseY, mPaint);
 
             mPaint.setColor(mTimePicker.getMode() == TimePicker.MODE_MINUTE ? mTimePicker.getTextHighlightColor() : mTextTimeColor);
-            canvas.drawText(mMinute, mMinuteX, mBaseY, mPaint);
+            canvas.drawText(TypefaceUtil.getArNum(mMinute), mMinuteX, mBaseY, mPaint);
 
             if(!mTimePicker.is24Hour()) {
                 mPaint.setTextSize(mTimePicker.getTextSize());

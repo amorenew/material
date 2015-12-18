@@ -510,7 +510,7 @@ public class TimePicker extends View{
             for(int i = 0; i < length; i++) {
                 index = start + i;
                 mPaint.setColor(index == selectedTick ? mTextHighlightColor : mTextColor);
-                canvas.drawText(TICKS[index], mLocations[index * 2], mLocations[index * 2 + 1], mPaint);
+                canvas.drawText(TypefaceUtil.getArNum(TICKS[index]), mLocations[index * 2], mLocations[index * 2 + 1], mPaint);
             }
         }
         else{
@@ -601,7 +601,7 @@ public class TimePicker extends View{
                 x = mLocations[index * 2] + (float)Math.cos(angle) * outOffset;
                 y = mLocations[index * 2 + 1] + (float)Math.sin(angle) * outOffset;
                 mPaint.setColor(index == outSelectedTick ? textHighlightOutColor : textOutColor);
-                canvas.drawText(TICKS[index], x, y, mPaint);
+                canvas.drawText(TypefaceUtil.getArNum(TICKS[index]), x, y, mPaint);
                 angle += step;
             }
 
@@ -610,7 +610,7 @@ public class TimePicker extends View{
                 x = mLocations[index * 2] + (float)Math.cos(angle) * inOffset;
                 y = mLocations[index * 2 + 1] + (float)Math.sin(angle) * inOffset;
                 mPaint.setColor(index == inSelectedTick ? textHighlightInColor : textInColor);
-                canvas.drawText(TICKS[index], x, y, mPaint);
+                canvas.drawText(TypefaceUtil.getArNum(TICKS[index]), x, y, mPaint);
                 angle += step;
             }
         }
