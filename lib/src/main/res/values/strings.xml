@@ -6,8 +6,8 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="exit_message">Do you want to exit?</string>
-    <string name="am">PM</string>
-    <string name="pm">AM</string>
+    <string name="am">AM</string>
+    <string name="pm">PM</string>
 
     <array name="progress_colors">
         <item>#FF3F8AF8</item>
