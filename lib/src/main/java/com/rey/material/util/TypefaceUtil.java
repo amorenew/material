@@ -45,15 +45,20 @@ public class TypefaceUtil {
         }
 
         char[] arabicChars = {'٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'};
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < number.length(); i++) {
-            if (Character.isDigit(number.charAt(i))) {
-                builder.append(arabicChars[(int) (number.charAt(i)) - 48]);
-            } else {
-                builder.append(number.charAt(i));
+        try {
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < number.length(); i++) {
+                if (Character.isDigit(number.charAt(i))) {
+                    builder.append(arabicChars[(int) (number.charAt(i)) - 48]);
+                } else {
+                    builder.append(number.charAt(i));
+                }
             }
+            return builder.toString();
+        } catch (Exception e) {
+
+            return number;
         }
-        return builder.toString();
     }
 
     public static String getArNum(int numberText) {
@@ -65,7 +70,12 @@ public class TypefaceUtil {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < number.length(); i++) {
             if (Character.isDigit(number.charAt(i))) {
-                builder.append(arabicChars[(int) (number.charAt(i)) - 48]);
+                int arabicNumber = (int) (number.charAt(i)) - 48;
+                if (arabicNumber < arabicChars.length) {
+                    builder.append(arabicChars[arabicNumber]);
+                } else {
+                    return number;
+                }
             } else {
                 builder.append(number.charAt(i));
             }
